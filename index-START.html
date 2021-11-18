@@ -26,6 +26,7 @@
     .panels {
       min-height: 100vh;
       overflow: hidden;
+      display: flex;
     }
 
     .panel {
@@ -43,6 +44,12 @@
       font-size: 20px;
       background-size: cover;
       background-position: center;
+      /* Using flex 1 evenly distributes the panels to use up all the extra space */
+      flex: 1; 
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
     }
 
     .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
@@ -56,7 +63,17 @@
       margin: 0;
       width: 100%;
       transition: transform 0.5s;
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
     }
+
+    .panel >*:first-child { transform: translateY(-100%);}
+    .panel.open-active >*:first-child { transform: translateY(0);}
+    .panel >*:last-child { transform: translateY(100%);}
+    .panel.panel.open-active >*:last-child { transform: translateY(0);}
 
     .panel p {
       text-transform: uppercase;
@@ -71,6 +88,8 @@
 
     .panel.open {
       font-size: 40px;
+      /* Giving a flex of 5 means the image will take up 5 times the amount of room */
+      flex: 5;
     }
 
   </style>
